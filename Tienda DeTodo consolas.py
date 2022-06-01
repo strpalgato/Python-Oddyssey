@@ -39,7 +39,7 @@ while(True):
             else:
                 print("Error, el producto ingresado no es valido")
                 continue
-        except:
+        except ValueError:
             print("Error, el producto ingresado no es valido")
             continue
     if(producto=="MEGADRIVE MINI") or (producto=="PLAYSTATION CLASSIC"):
@@ -78,6 +78,6 @@ while(True):
             break
         else:
             print("Solo se admiten los digitos 1, 2, 3 y 4")
-    except:
+    except ValueError:
         print("Solo ingresar los digitos mostrados, no se admiten ni caracteres ni decimales.")
     break
