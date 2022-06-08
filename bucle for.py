@@ -11,3 +11,16 @@ for i in range (age):
 n=int(input("Introduce un número entero positivo: "))
 for i in range (1, n+2, 2):
     print(i, end=",")
+
+#Actividad
+#Escribir un programa que pida al usuario una palabra y luego
+#muestre por pantalla una a una las letras de la palabra
+#empezando por la última.
+print("")
+palabra=input("Por favor, introduzca una palabra: ")
+
+str = palabra
+palabra=''.join(reversed(str))
+
+for x in palabra:
+    print(x)
