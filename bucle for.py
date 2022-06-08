@@ -16,6 +16,7 @@ for i in range (1, n+2, 2):
 #Escribir un programa que pida al usuario una palabra y luego
 #muestre por pantalla una a una las letras de la palabra
 #empezando por la última.
+lista=[]
 print("")
 palabra=input("Por favor, introduzca una palabra: ")
 
@@ -23,4 +24,10 @@ str = palabra
 palabra=''.join(reversed(str))
 
 for x in palabra:
+    lista.append(x)
     print(x)
+print("")
+print(lista)
+inversion="".join(lista)
+print("")
+print(inversion)
