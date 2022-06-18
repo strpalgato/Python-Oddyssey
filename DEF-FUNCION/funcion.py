@@ -33,9 +33,9 @@ def sumaDos1():
     suma=num1+num2
     return suma
 
-#aqui comienza el main o programa principal.
+# aqui comienza el main o programa principal.
 print("Ejemplo de funciones")
 sumaDos()
-#funcion que retorna la suma.
+# funcion que retorna la suma.
 aa=sumaDos1()
 print("La suma es {}".format(aa))
