@@ -1,14 +1,14 @@
 import numpy as np
-camarote=0
-while(True): # creacion de matriz
-    matriz=np.empty((6,6))
-    for i in range(6):
-        for j in range(6):
-            while(True):
-                camarote+=1
-                break
-            matriz[i,j]=camarote
-    break
-print(matriz)
-matrizlen=len(matriz)
-print(matrizlen)
+def menu():
+    print("D E V I A N T")
+    print("**************************************")
+    print("1. Mostrar camarotes disponibles")
+    print("2. Comprar pasaje")
+    print("3. Totales")
+    print("4. Anular venta")
+    print("5. Listado de pasajeros")
+    print("6. Salir")
+    print()
+
+menu()
+

@@ -2,6 +2,35 @@ from os import system
 system("cls")
 import numpy as np
 
+def menu(): # muestra el menú de opciones
+    print("D E V I A N T")
+    print("**************************************")
+    print("1. Mostrar camarotes disponibles")
+    print("2. Comprar pasaje")
+    print("3. Totales")
+    print("4. Anular venta")
+    print("5. Listado de pasajeros")
+    print("6. Salir")
+    print()
+
+def opcion3(): # imprime la boleta de ganancias al seleccionar la opcion 3
+    print("----------------------------------------------")
+    print("Cantidad de camarotes Vip vendidos: {}".format(vip))
+    print("Cantidad de camarotes Normales vendidos: {}".format(normal))
+    print("Cantidad de camarotes Premium vendidos: {}".format(premium))
+    print("Total recaudado: ${}".format(ganancias))
+    input("Presione 'enter' para continuar...")
+
+def ordenar_id(): # ordena las id de los pasajeros en la opcion 5 si es que se cumplen las condiciones
+    print("A continuación se mostrará la lista de pasajeros ordenada de menor a mayor según su id: ")
+    for recorrido in range(1,len(id_pasajero)): # ciclo for para ordenar la lista de menor a mayor
+        for posicion in range(len(id_pasajero)-recorrido):
+            if id_pasajero[posicion]>id_pasajero[posicion+1]:
+                temp=id_pasajero[posicion]
+                id_pasajero[posicion]=id_pasajero[posicion+1]
+                id_pasajero[posicion+1]=temp
+    print(id_pasajero) # se imprime la lista de menor a mayor
+
 id_pasajero=[] # lista pasajeros
 asientosV=[] # lista de asientos que se venden con su respectivo numero
 camarote=0 # contador matriz
@@ -22,15 +51,7 @@ while(True): # creacion de matriz
 
 while(True): # menú
     c=0
-    print("D E V I A N T")
-    print("**************************************")
-    print("1. Mostrar camarotes disponibles")
-    print("2. Comprar pasaje")
-    print("3. Totales")
-    print("4. Anular venta")
-    print("5. Listado de pasajeros")
-    print("6. Salir")
-    print()
+    menu()
     try:
         opcion=int(input("Elija una de las opciones: "))
         if(opcion!=1) and (opcion!=2) and (opcion!=3) and (opcion!=4) and (opcion!=5) and (opcion!=6):
@@ -99,12 +120,7 @@ while(True): # menú
                     continue
                 break
         if(opcion==3):
-            print("----------------------------------------------")
-            print("Cantidad de camarotes Vip vendidos: {}".format(vip))
-            print("Cantidad de camarotes Normales vendidos: {}".format(normal))
-            print("Cantidad de camarotes Premium vendidos: {}".format(premium))
-            print("Total recaudado: ${}".format(ganancias))
-            input("Presione 'enter' para continuar...")
+            opcion3()
             continue
         if(opcion==4):
             while(True):
@@ -122,9 +138,9 @@ while(True): # menú
                                                 pos=asientosV.index(anular)
                                                 id_pasajero.pop(pos)
                                                 asientosV.remove(anular)
+                                                matriz[matriz==-1]=anular
                                                 vip-=1
-                                                ganancias-=300
-                                                
+                                                ganancias-=300                                               
                                                 matriz.sort(axis=1)
                                                 print("Compra anulada exitosamente, volviendo al menú")
                                                 break
@@ -132,6 +148,7 @@ while(True): # menú
                                                 pos=asientosV.index(anular)
                                                 id_pasajero.pop(pos)
                                                 asientosV.remove(anular)
+                                                matriz[matriz==-1]=anular
                                                 premium-=1
                                                 ganancias-=200
                                                 print("Compra anulada exitosamente, volviendo al menú")
@@ -140,6 +157,7 @@ while(True): # menú
                                                 pos=asientosV.index(anular)
                                                 id_pasajero.pop(pos)
                                                 asientosV.remove(anular)
+                                                matriz[matriz==-1]=anular
                                                 normal-=1
                                                 ganancias-=100
                                                 print("Compra anulada exitosamente, volviendo al menú")
@@ -163,14 +181,7 @@ while(True): # menú
                 print("En estos momentos no se encuentra ningun pasajero registrado en la lista.\nNo existen ventas...")
                 continue
             else:
-                print("A continuación se mostrará la lista de pasajeros ordenada de menor a mayor según su id: ")
-                for recorrido in range(1,len(id_pasajero)): # ciclo for para ordenar la lista de menor a mayor
-                    for posicion in range(len(id_pasajero)-recorrido):
-                        if id_pasajero[posicion]>id_pasajero[posicion+1]:
-                            temp=id_pasajero[posicion]
-                            id_pasajero[posicion]=id_pasajero[posicion+1]
-                            id_pasajero[posicion+1]=temp
-                print(id_pasajero) # se imprime la lista de menor a mayor
+                ordenar_id()
                 continue
         if(opcion==6):
             print("¡Que tenga un excelente día!")
